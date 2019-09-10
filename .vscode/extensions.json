@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"ms-azuretools.vscode-docker",
+		"editorconfig.editorconfig",
 		"liximomo.sftp"
 	]
 }
