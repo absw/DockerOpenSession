@@ -1,0 +1,16 @@
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+
+docker swarm init
+docker stack deploy -c docker-compose.yml load-balance-webserver
+docker stack ps load-balance-webserver
+docker stack rm load-balance-webserver
+docker swarm leave --force
+docker container prune
+exit

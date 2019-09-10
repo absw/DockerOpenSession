@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  bluefruit-webserver:
+    image: httpd:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/usr/local/apache2/htdocs
