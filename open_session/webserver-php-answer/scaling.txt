@@ -1,16 +1,22 @@
     deploy:
-      replicas: 5
+      replicas: 2
       resources:
         limits:
           cpus: "0.1"
           memory: 50M
       restart_policy:
         condition: on-failure
+    networks:
+      - webnet
+networks: 
+  webnet:
 
 docker swarm init
-docker stack deploy -c docker-compose.yml load-balance-webserver
-docker stack ps load-balance-webserver
-docker stack rm load-balance-webserver
+docker stack deploy -c docker-compose.yml webstack
+docker service ls
+docker stack ps webstack
+docker container ls -q
+docker stack rm webstack
 docker swarm leave --force
 docker container prune
 exit
