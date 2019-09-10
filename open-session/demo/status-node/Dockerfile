@@ -9,9 +9,9 @@ RUN apt-get update \
 # Build the C++ Application
 FROM tools as cppbuild
 
-RUN mkdir -p /usr/src/checkstatus/build
-WORKDIR /usr/src/checkstatus/build
-COPY checkstatus/ /usr/src/checkstatus
+RUN mkdir -p /usr/src/check-status/build
+WORKDIR /usr/src/check-status/build
+COPY check-status/ /usr/src/check-status
 
 RUN cmake .. && make
 
@@ -19,6 +19,6 @@ RUN cmake .. && make
 FROM ubuntu
 LABEL maintainer="Byran Wills-Heath <byran@bluefruit.co.uk>"
 
-COPY --from=cppbuild /usr/src/checkstatus/build/checkstatus /checkstatus
+COPY --from=cppbuild /usr/src/check-status/build/checkstatus /checkstatus
 
 ENTRYPOINT [ "/checkstatus" ]
