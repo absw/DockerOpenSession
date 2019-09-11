@@ -1,9 +1,0 @@
-version: "3.7"
-
-services:
-  bluefruit-webserver:
-    image: php:7.2-apache
-    ports:
-      - "80:80"
-    volumes:
-      - ./html:/var/www/html
