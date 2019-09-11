@@ -1,1 +1,3 @@
 .vscode/sftp.json
+/open-session/*/data/
+/open-session/complete/*/data/

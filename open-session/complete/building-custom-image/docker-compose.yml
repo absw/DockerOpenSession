@@ -1,0 +1,20 @@
+version: "3"
+services:
+  web:
+    image: bluefruit/flask-app
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - NAME=Bluefruit
+    networks:
+      - webnet
+  redis:
+    image: redis
+    volumes:
+      - "./data:/data"
+    command: redis-server --appendonly yes
+    networks:
+      - webnet
+networks:
+  webnet:
