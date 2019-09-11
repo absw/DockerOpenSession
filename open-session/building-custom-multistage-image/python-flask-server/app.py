@@ -5,17 +5,16 @@ import socket
 import subprocess
 
 # Connect to Redis
-#redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    #try:
-    #    visits = redis.incr("counter")
-    #except RedisError:
-    #    visits = "<i>cannot connect to Redis, counter disabled</i>"
-    visits = 4
+    try:
+        visits = redis.incr("counter")
+    except RedisError:
+        visits = "<i>cannot connect to Redis, counter disabled</i>"
 
     out = subprocess.Popen(['/app/checkstatus'], 
            stdout=subprocess.PIPE, 
