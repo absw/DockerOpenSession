@@ -1,0 +1,28 @@
+Exercise
+========
+
+Create an image to build and run the C++ application in the check-status
+using gcc 9.2 and tag the image as bluefruit/cppapp
+
+When the image is run it should run the checkstatus application
+
+
+Commands to build the application on a linux system
+===================================================
+
+Install the cmake requirement
+$ apt-get update
+$ apt-get install -y cmake
+
+Create a directory to build the code in
+$ mkdir -p check-status/build
+$ cd check-status/build
+
+Create the Makefile(s) using cmake
+$ cmake ..
+
+Build the application
+$ make
+
+Run the application
+$ ./checkstatus
