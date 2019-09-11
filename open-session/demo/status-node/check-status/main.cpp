@@ -2,5 +2,5 @@
 
 int main(int argc, char**)
 {
-	std::cout << argc << std::endl;
+	std::cout << "argc:" << argc << std::endl;
 }

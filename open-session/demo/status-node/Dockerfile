@@ -16,9 +16,26 @@ COPY check-status/ /usr/src/check-status
 RUN cmake .. && make
 
 # Create the application image (without the tools)
-FROM ubuntu
+# Use an official Python runtime as a parent image
+FROM python:2.7-slim
 LABEL maintainer="Byran Wills-Heath <byran@bluefruit.co.uk>"
 
-COPY --from=cppbuild /usr/src/check-status/build/checkstatus /checkstatus
+COPY --from=cppbuild /usr/src/check-status/build/checkstatus /app/checkstatus
 
-ENTRYPOINT [ "/checkstatus" ]
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY ./python-flask-server /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
