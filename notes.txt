@@ -1,0 +1,29 @@
+run docker to show possible command and demonstrate --help
+
+Find apache httpd on hub
+run httpd - attached, no volume mounts
+run httpd - detached, no volume mounts
+docker ps
+docker stop
+run httpd - volume mount
+run httpd - host fs volume mount
+
+Exercise php version
+
+Building custom image
+show how to run python app locally (do in Dockerfile)
+find python on hub - show building instructions
+Convert command in Dockerfile to commands
+docker build
+docker run
+docker push to hub in bluefruit namespace
+
+Exercise build cpp application
+docker images to see the size of the image
+
+Add docker-compose.yml to codify parameters
+docker-compose up
+Add redis to python app
+add second service
+
+Multistage build and adding cpp application into python container
