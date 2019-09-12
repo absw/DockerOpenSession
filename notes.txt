@@ -1,6 +1,7 @@
 run docker to show possible command and demonstrate --help
+docs.docker.com
 
-Find apache httpd on hub
+Find apache httpd on hub (mention offical images)
 run httpd - attached, no volume mounts
 run httpd - detached, no volume mounts
 docker ps
